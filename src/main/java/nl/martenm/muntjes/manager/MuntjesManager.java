@@ -24,12 +24,13 @@ public class MuntjesManager {
         this.saveFile = new Config(plugin, "muntjes-save");
     }
 
-    public void createPlayer(UUID uuid, String name, String nickName) {
-        if(hasProfile(uuid)) return;
+    public MuntjesPlayer createPlayer(UUID uuid, String name, String nickName) {
+        if(hasProfile(uuid)) return null;
         MuntjesPlayer player = new MuntjesPlayer(uuid, name, nickName, 0);
         player.addOnChange(onPlayerChange(player));
 
         muntjesPlayers.add(player);
+        return player;
     }
 
     public boolean hasProfile(UUID uuid) {

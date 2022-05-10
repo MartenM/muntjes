@@ -23,7 +23,7 @@ public class MuntjesLijstCommand extends SimpleCommand {
         sender.sendMessage(" ");
         int index = 1;
         for(MuntjesPlayer player : list) {
-            sender.sendMessage(ChatColor.GRAY + "#1" + formatPlayer(player));
+            sender.sendMessage(ChatColor.GRAY + "#" + index + formatPlayer(player));
             index++;
         }
         sender.sendMessage(" ");
@@ -31,6 +31,6 @@ public class MuntjesLijstCommand extends SimpleCommand {
     }
 
     private static String formatPlayer(MuntjesPlayer player) {
-        return "  " + ChatColor.RESET + player.getName() + " " + ChatColor.GRAY + "- " + ChatColor.YELLOW + player.getMuntjes();
+        return "  " + ChatColor.RESET + player.getNickName() + " " + ChatColor.GRAY + "- " + ChatColor.YELLOW + player.getMuntjes();
     }
 }

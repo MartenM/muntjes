@@ -71,4 +71,12 @@ public class MuntjesPlayer implements ConfigurationSerializable {
     public void addOnChange(Runnable runnable) {
         this.onChange.add(runnable);
     }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
 }
