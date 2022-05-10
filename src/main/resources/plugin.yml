@@ -1,0 +1,9 @@
+main: nl.martenm.muntjes.Muntjes
+name: Muntjes
+prefix: Muntjes
+author: MartenM
+version: ${project.version}
+description: "Ik wil muntjes"
+commands:
+  muntjes:
+    description: "All the muntjes"
