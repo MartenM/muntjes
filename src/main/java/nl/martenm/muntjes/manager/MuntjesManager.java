@@ -50,7 +50,7 @@ public class MuntjesManager {
     }
 
     public List<MuntjesPlayer> getSortedPlayers() {
-        muntjesPlayers.sort((a, b) -> a.getMuntjes() > b.getMuntjes() ? 1 : 0);
+        muntjesPlayers.sort((a, b) -> a.getMuntjes() > b.getMuntjes() ? -1 : 1);
         return muntjesPlayers;
     }
 

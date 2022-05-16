@@ -3,6 +3,7 @@ name: Muntjes
 prefix: Muntjes
 author: MartenM
 version: ${project.version}
+api-version: 1.18
 description: "Ik wil muntjes"
 commands:
   muntjes:
