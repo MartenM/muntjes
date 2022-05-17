@@ -4,6 +4,7 @@ import nl.martenm.muntjes.commands.MuntjesCommand;
 import nl.martenm.muntjes.listeners.PlayerJoinListener;
 import nl.martenm.muntjes.manager.MuntjesManager;
 import nl.martenm.muntjes.objects.MuntjesPlayer;
+import nl.martenm.muntjes.papi.MuntjesPlaceholderExpansion;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,6 +32,8 @@ public class Muntjes extends JavaPlugin {
             getLogger().warning("Could not find PlaceholderAPI! This plugin is required.");
             Bukkit.getPluginManager().disablePlugin(this);
         }
+
+        new MuntjesPlaceholderExpansion(this).register();
 
         new MuntjesCommand().registerCommand(this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);

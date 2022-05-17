@@ -5,6 +5,7 @@ author: MartenM
 version: ${project.version}
 api-version: 1.18
 description: "Ik wil muntjes"
+depend: [PlaceholderAPI]
 commands:
   muntjes:
     description: "All the muntjes"

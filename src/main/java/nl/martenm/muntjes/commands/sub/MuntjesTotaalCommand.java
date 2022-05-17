@@ -6,22 +6,22 @@ import nl.martenm.simplecommands.SimpleCommand;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MuntjesLijstCommand extends SimpleCommand {
-
-    public MuntjesLijstCommand() {
-        super("lijst", "Laat een lijst zien van alle spelers.", "+lijst", false);
+public class MuntjesTotaalCommand extends SimpleCommand {
+    public MuntjesTotaalCommand() {
+        super("totaal", "Een lijst met het totaal aantal muntjes verkregen van elke persoon.", "+totaal", false);
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] strings) {
         Muntjes plugin = Muntjes.getInstance();
-        List<MuntjesPlayer> list = plugin.getMuntjesManager().getSortedPlayers();
+        List<MuntjesPlayer> list = plugin.getMuntjesManager().getSortedTotal();
 
         sender.sendMessage(" ");
-        sender.sendMessage(ChatColor.GREEN + "  Huidige " + ChatColor.GRAY + "aantal muntjes");
+        sender.sendMessage(ChatColor.GOLD + "  Totaal " + ChatColor.GRAY + "aantal muntjes");
         sender.sendMessage(" ");
         int index = 1;
         for(MuntjesPlayer player : list) {
@@ -33,6 +33,6 @@ public class MuntjesLijstCommand extends SimpleCommand {
     }
 
     private static String formatPlayer(MuntjesPlayer player) {
-        return "  " + ChatColor.RESET + player.getNickName() + " " + ChatColor.GRAY + "- " + ChatColor.YELLOW + player.getMuntjes();
+        return "  " + ChatColor.RESET + player.getNickName() + " " + ChatColor.GRAY + "- " + ChatColor.YELLOW + player.getTotalMuntjes();
     }
 }

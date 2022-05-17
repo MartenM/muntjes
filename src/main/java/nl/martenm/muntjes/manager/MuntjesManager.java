@@ -26,7 +26,7 @@ public class MuntjesManager {
 
     public MuntjesPlayer createPlayer(UUID uuid, String name, String nickName) {
         if(hasProfile(uuid)) return null;
-        MuntjesPlayer player = new MuntjesPlayer(uuid, name, nickName, 0);
+        MuntjesPlayer player = new MuntjesPlayer(uuid, name, nickName, 0, 0);
         player.addOnChange(onPlayerChange(player));
 
         muntjesPlayers.add(player);
@@ -51,6 +51,11 @@ public class MuntjesManager {
 
     public List<MuntjesPlayer> getSortedPlayers() {
         muntjesPlayers.sort((a, b) -> a.getMuntjes() > b.getMuntjes() ? -1 : 1);
+        return muntjesPlayers;
+    }
+
+    public List<MuntjesPlayer> getSortedTotal() {
+        muntjesPlayers.sort((a, b) -> a.getTotalMuntjes() > b.getTotalMuntjes() ? -1 : 1);
         return muntjesPlayers;
     }
 

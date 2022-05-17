@@ -12,12 +12,14 @@ public class MuntjesPlayer implements ConfigurationSerializable {
     private String name;
     private String nickName;
     private int muntjes;
+    private int totalMuntjes;
 
-    public MuntjesPlayer(UUID uuid, String name, String nickName, int muntjes) {
+    public MuntjesPlayer(UUID uuid, String name, String nickName, int muntjes, int totalMuntjes) {
         this.uuid = uuid;
         this.name = name;
         this.muntjes = muntjes;
         this.nickName = nickName == null ? name : nickName;
+        this.totalMuntjes = totalMuntjes;
     }
 
     public MuntjesPlayer(Map<String, Object> data) {
@@ -25,6 +27,7 @@ public class MuntjesPlayer implements ConfigurationSerializable {
         this.name = (String) data.get("name");
         this.nickName = (String) data.get("nick-name");
         this.muntjes = (Integer) data.get("muntjes");
+        this.totalMuntjes = (Integer) data.getOrDefault("total", 0);
     }
 
     public Map<String, Object> serialize() {
@@ -33,6 +36,7 @@ public class MuntjesPlayer implements ConfigurationSerializable {
         data.put("name", name);
         data.put("nick-name", nickName);
         data.put("muntjes", muntjes);
+        data.put("total", totalMuntjes);
         return data;
     }
 
@@ -55,6 +59,7 @@ public class MuntjesPlayer implements ConfigurationSerializable {
     public void addMuntjes(int amount) {
         assert(amount >= 0);
         this.muntjes += amount;
+        this.totalMuntjes += amount;
         notifyChanged();
     }
 
@@ -62,6 +67,10 @@ public class MuntjesPlayer implements ConfigurationSerializable {
         assert(amount >= 0);
         this.muntjes -= amount;
         notifyChanged();
+    }
+
+    public int getTotalMuntjes() {
+        return totalMuntjes;
     }
 
     private void notifyChanged() {
