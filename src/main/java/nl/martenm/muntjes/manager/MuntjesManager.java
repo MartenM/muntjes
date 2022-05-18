@@ -63,6 +63,9 @@ public class MuntjesManager {
         // Clear just in case.
         this.muntjesPlayers.clear();
 
+        // Reset the safe file.
+        this.saveFile = new Config(plugin, "muntjes-save");
+
         this.plugin.getLogger().info("Muntjes worden geladen...");
 
         ConfigurationSection section = saveFile.getConfigurationSection("players");
